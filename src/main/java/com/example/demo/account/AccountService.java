@@ -22,9 +22,10 @@ public class AccountService {
         return account;
     }
 
-    public Optional<Object> getAccount(String id) {
-        return Optional.of(accounts.stream()
-                .filter(account -> account.id().toString().equals(id))
-                .findFirst());
+    public Account getAccountName(String name) {
+        return accounts.stream()
+                .filter(account -> account.name().equals(name))
+                .findFirst()
+                .orElse(null);
     }
 }

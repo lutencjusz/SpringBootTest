@@ -17,11 +17,9 @@ public class AccountController {
         return new ResponseEntity<>(accountService.getAllAccounts(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/accounts/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> getAccount(@PathVariable("id") String id) {
-        return ResponseEntity.ok(accountService.getAccount(id)
-                .map(account -> new ResponseEntity<>(account, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND)));
+    @GetMapping(value = "/accounts/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Account> getAccountName(@PathVariable("name") String name) {
+        return new ResponseEntity<>(accountService.getAccountName(name), HttpStatus.OK);
     }
 
     @PostMapping(value = "/accounts", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
