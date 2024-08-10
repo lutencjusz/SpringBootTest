@@ -14,7 +14,7 @@ public class AccountService {
     private AccountRepository accountRepository;
 
     public void createExampleData() {
-        accountRepository.save(new Account(UUID.randomUUID(), "Test 1", "123456"));
+        accountRepository.save(new Account(UUID.randomUUID(), "Test_1", "123456"));
         accountRepository.save(new Account(UUID.randomUUID(), "Test 2", "12345622"));
     }
 
@@ -28,7 +28,9 @@ public class AccountService {
     }
 
     public Account getAccountName(String name) {
-        return accountRepository.findByName(name)
+        return accountRepository.findAll().stream()
+                .filter(account -> account.getName().equals(name))
+                .findFirst()
                 .orElse(null);
     }
 
