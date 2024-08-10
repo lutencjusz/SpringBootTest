@@ -33,7 +33,7 @@ class SprintBootTestApplicationTests {
         Assertions.assertNotNull(account, "Account - jest puste");
         Assertions.assertEquals(HttpStatusCode.valueOf(200), account.getStatusCode(), "Account - nie ma statusu 200");
         Assertions.assertNotNull(account.getBody(), "Account - nie ma ciała");
-        Assertions.assertTrue(Objects.requireNonNull(account.getBody()).getName().contains(accountName), "Account - nie zawiera Test 1");
+        Assertions.assertTrue(Objects.requireNonNull(account.getBody()).getName().contains(accountName), "Pole nazwa w Account - nie zawiera " + accountName);
     }
 
 }
